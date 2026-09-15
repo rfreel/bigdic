@@ -1,0 +1,15 @@
+{
+  "lexemes": 794,
+  "signatures": 1000,
+  "contracts": 20,
+  "signatureHeadings": 1000,
+  "lexicalRecords": 794,
+  "unknownOrigins": [],
+  "coverage": true,
+  "limits": [
+    "Referenced V1 source and data/dictionary_v2.json were not supplied.",
+    "Source references are retained claims from the uploaded V2, not independently resolved V1 spans.",
+    "Lexical coverage is not semantic completeness."
+  ],
+  "sourceSHA256": "1df69d1f70f4cb66fe1fa73b8924e1d8dd06967fe494342f5385291e819cc23f"
+}
