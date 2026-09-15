@@ -1,0 +1,26 @@
+✔ exact uploaded source fingerprint retained (2.818852ms)
+✔ every lexical and signature heading accounted for (2.51225ms)
+✔ every parsed signature maps to exact source lines (7.766891ms)
+✔ all inherited contract references resolve (1.987567ms)
+✔ VERIFY retains external, formal, runtime, and source senses (0.579028ms)
+✔ exact lookup outranks incidental definition matches (78.141941ms)
+✔ source form lookup handles multiword modifiers (34.412152ms)
+✔ joint facets apply to the same sense, not different senses on a lexeme (6.916525ms)
+✔ comparison exposes substantive role and obligation differences (1.517044ms)
+✔ prompt inspection matches expression boundaries and retains ambiguous senses (1335.125592ms)
+✔ longest match retains nested interpretations (982.992932ms)
+✔ unbound drafts never become bound by requesting strength (1.718021ms)
+✔ bound export preserves local refinements and inherited authority clauses (1.007193ms)
+✔ unknown senses and malformed imports fail closed (17.832338ms)
+✔ project export remains deterministic (3.303406ms)
+✔ journal survives export, rejects edits and head truncation, and preserves prior records (31.777793ms)
+✔ Unicode prompt offsets round trip to original text (1394.534324ms)
+✔ no-hit search is an empty result rather than a fallback interpretation (13.122609ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4682.570352

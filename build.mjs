@@ -1,0 +1,14 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {parseDictionary,auditDictionary} from './src/core.mjs';
+const root=new URL('./',import.meta.url),read=p=>readFile(new URL(p,root),'utf8');
+const source=await read('data/dictionary-v2.md'),sha256=createHash('sha256').update(source).digest('hex');
+const audit=auditDictionary(parseDictionary(source));if(!audit.coverage)throw new Error('Dictionary coverage failed.');
+const modules=await Promise.all(['src/core.mjs','src/journal.mjs','src/app.mjs'].map(read));
+const js=modules.map(s=>s.replace(/^import .*;\n/gm,'').replace(/^export /gm,'')).join('\n');
+if(/<\/script/i.test(js))throw new Error('Unsafe script delimiter in bundle.');
+const css=await read('src/styles.css');
+const html=(await read('index.template.html')).replace('/*STYLES*/',()=>css).replace('/*SOURCE*/',()=>JSON.stringify({source,sha256}).replaceAll('<','\\u003c')).replace('/*APP*/',()=>js);
+await mkdir(new URL('dist/',root),{recursive:true});await writeFile(new URL('dist/bigdic.html',root),html);
+await writeFile(new URL('receipts/source-audit.json',root),JSON.stringify({...audit,sourceSHA256:sha256},null,2)+'\n');
+console.log(JSON.stringify({file:'dist/bigdic.html',bytes:Buffer.byteLength(html),lexemes:audit.lexemes,signatures:audit.signatures,sourceSHA256:sha256}));
