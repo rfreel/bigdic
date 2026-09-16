@@ -14,9 +14,8 @@ signatures=re.findall(r"^#### (SIG-[^\n]+)$",lexical,re.M)
 operators=re.findall(r"^Operator: `([^`]+)`\.",lexical,re.M)
 axes=re.findall(r"^Axis: `([^`]+)`\.",lexical,re.M)
 origins=re.findall(r"^Origin: ([A-Z_]+)\.",lexical,re.M)
-macros=re.findall(r"^Macro expression: `([^`]+)`\.",lexical,re.M)
-counts=collections.Counter()
-current=None
+macros=re.findall(r"^Macro source expression: `([^`]+)`\.",lexical,re.M)
+counts=collections.Counter(); current=None
 for line in lexical.splitlines():
     if line.startswith("### "): current=line[4:]
     elif line.startswith("#### SIG-") and current: counts[current]+=1
