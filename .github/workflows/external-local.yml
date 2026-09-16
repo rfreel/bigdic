@@ -4,6 +4,12 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '17 5 * * 1'
+  push:
+    branches: [operator-compiler-v1]
+    paths:
+      - '.github/workflows/external-local.yml'
+      - 'scripts/run_local_model_smoke.py'
+      - 'src/operator_compiler/experiments.py'
 
 permissions:
   contents: read
