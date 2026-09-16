@@ -12,6 +12,6 @@
   {"task":11,"name":"Adaptive budget allocation","status":"SOLVED","evidence":["src/operator_compiler/budget.py","results/budget_frontier.csv"]},
   {"task":12,"name":"Counterfactual replay","status":"SOLVED","evidence":["src/operator_compiler/replay.py","data/measurements/marginal_deletion_value.csv","data/measurements/pairwise_interactions.csv"]},
   {"task":13,"name":"Cross-regime transfer","status":"SOLVED_WITHIN_FINITE_LANE","evidence":["src/operator_compiler/transfer.py","data/measurements/transfer_by_regime.csv","results/transfer_summary.json"]},
-  {"task":14,"name":"Cross-model causal experiments","status":"BLOCKED_EXTERNAL_MODEL","evidence":["src/operator_compiler/external.py","data/measurements/external_model_receipt.json","results/external_evidence_state.json"],"reopen_trigger":"isolated model execution becomes available without HTTP 402 billing block"},
+  {"task":14,"name":"Cross-model causal experiments","status":"UNRESOLVED","evidence":["src/operator_compiler/backends.py","src/operator_compiler/experiments.py","results/local_model_smoke_summary.json"],"observation":"12 independent trials executed on Qwen/Qwen2.5-0.5B-Instruct via GitHub-hosted LOCAL_TRANSFORMERS; additional models and task regimes remain required for cross-model inference","reopen_trigger":"execute frozen treatment design on additional model families and positive/neutral/adversarial task slices"},
   {"task":15,"name":"Runtime controller","status":"SOLVED_WITHIN_FINITE_LANE","evidence":["src/operator_compiler/runtime/controller.py","results/controller_eval.csv"]}
 ]
