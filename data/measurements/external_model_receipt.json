@@ -1,0 +1,8 @@
+{
+  "attempt": "uv cpu-basic hello-world capability check",
+  "error": "HTTP 402 Payment Required",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_trials_executed": 0,
+  "provider": "Hugging Face Jobs",
+  "status": "BLOCKED_EXTERNAL_MODEL"
+}

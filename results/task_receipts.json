@@ -1,0 +1,17 @@
+[
+  {"task":1,"name":"Operator State IR","status":"SOLVED","evidence":["src/operator_compiler/state.py","results/state_schema.json"]},
+  {"task":2,"name":"Executable operator contracts","status":"SOLVED","evidence":["src/operator_compiler/contracts.py","results/contracts.json"]},
+  {"task":3,"name":"Applicability measurement","status":"SOLVED","evidence":["src/operator_compiler/value.py","results/conditional_value_tensor.csv"]},
+  {"task":4,"name":"State-conditioned marginal value","status":"SOLVED","evidence":["src/operator_compiler/value.py","results/conditional_value_tensor.csv"]},
+  {"task":5,"name":"Value of Computation","status":"SOLVED","evidence":["src/operator_compiler/value.py","results/conditional_value_tensor.csv"]},
+  {"task":6,"name":"Value of Experiment / EVSI","status":"SOLVED","evidence":["src/operator_compiler/value.py","results/conditional_value_tensor.csv"]},
+  {"task":7,"name":"Conditional interaction structure","status":"SOLVED","evidence":["src/operator_compiler/interactions.py","data/measurements/pairwise_interactions.csv"]},
+  {"task":8,"name":"Operator motif discovery","status":"SOLVED","evidence":["src/operator_compiler/motifs.py","results/motifs.json"]},
+  {"task":9,"name":"Macro induction from measured chains","status":"SOLVED","evidence":["src/operator_compiler/motifs.py","results/induced_macros.json"]},
+  {"task":10,"name":"Sequence planner comparison","status":"SOLVED","evidence":["src/operator_compiler/planner","results/planner_comparison.csv"]},
+  {"task":11,"name":"Adaptive budget allocation","status":"SOLVED","evidence":["src/operator_compiler/budget.py","results/budget_frontier.csv"]},
+  {"task":12,"name":"Counterfactual replay","status":"SOLVED","evidence":["src/operator_compiler/replay.py","results/counterfactual_replay.csv"]},
+  {"task":13,"name":"Cross-regime transfer","status":"SOLVED_WITHIN_FINITE_LANE","evidence":["src/operator_compiler/transfer.py","results/transfer_summary.json"]},
+  {"task":14,"name":"Cross-model causal experiments","status":"BLOCKED_EXTERNAL_MODEL","evidence":["src/operator_compiler/external.py","results/external_evidence_state.json"],"reopen_trigger":"isolated model execution becomes available without HTTP 402 billing block"},
+  {"task":15,"name":"Runtime controller","status":"SOLVED_WITHIN_FINITE_LANE","evidence":["src/operator_compiler/runtime/controller.py","results/controller_eval.csv"]}
+]
