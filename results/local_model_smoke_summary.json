@@ -1,0 +1,26 @@
+{
+  "status": "EXECUTED",
+  "lane": "LOCAL_TRANSFORMERS",
+  "provider": "github_actions_local_transformers",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "workflow_run_id": 35044699137,
+  "artifact_id": 10426741431,
+  "artifact_digest": "sha256:21d8f8e57af5c67450e4f39c403c423f723f0937193feda12996ac3d3c35615a",
+  "trials": 12,
+  "tasks": 3,
+  "conditions": ["control", "placebo", "operator", "operator_check"],
+  "strict_exact": {
+    "control": {"correct": 2, "total": 3},
+    "placebo": {"correct": 0, "total": 3},
+    "operator": {"correct": 2, "total": 3},
+    "operator_check": {"correct": 2, "total": 3}
+  },
+  "observations": [
+    "TEST treatment changed the boolean output from 'False.' to strict-exact 'False'.",
+    "INFER treatment changed a correct arithmetic control answer (391) to incorrect answers (371 and 459).",
+    "COMPILE treatment preserved the correct constrained output 'cobalt'.",
+    "The matched placebo failed strict exact scoring on all three tasks.",
+    "Strict exact scoring is intentionally retained as the executed scorer; 'False.' demonstrates that semantic-normalized scoring is a separate unresolved measurement choice."
+  ],
+  "claim_boundary": "This is a 3-task smoke run on one 0.5B model. It establishes that the Hugging Face Jobs 402 can be bypassed with independent model execution; it does not establish operator ATE or cross-model generalization."
+}
