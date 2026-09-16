@@ -1,0 +1,36 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install
+        run: python -m pip install -e . pytest
+      - name: Tests
+        run: python -m pytest -q
+      - name: Regenerate artifacts
+        run: PYTHONPATH=src python scripts/build_artifacts.py
+      - name: Byte compile
+        run: python -m compileall -q src tests scripts
+      - name: Replay backend smoke
+        env:
+          BIGDIC_REPLAY_JSON: '{"ping":"pong"}'
+        run: |
+          python - <<'PY'
+          from operator_compiler.backends import BackendRegistry, TrialRequest
+          r = BackendRegistry.from_env()
+          assert r.names() == ('replay',)
+          assert r.get('replay').invoke(TrialRequest('ping','fixture')).text == 'pong'
+          PY
