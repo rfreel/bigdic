@@ -1,0 +1,25 @@
+{
+  "mission": "finite-artifact understanding of Dictionary V2",
+  "source": {"sha256": "1df69d1f70f4cb66fe1fa73b8924e1d8dd06967fe494342f5385291e819cc23f", "lines": 19192},
+  "checks": {
+    "source_hash_matches": true,
+    "source_lines_match": true,
+    "lexeme_count": true,
+    "signature_count": true,
+    "operator_count": true,
+    "axis_count": true,
+    "polysemy_count": true,
+    "source_provenance_count": true,
+    "authored_provenance_count": true,
+    "macro_count": true,
+    "all_signature_ids_unique": true
+  },
+  "all_checks_pass": true,
+  "status": {
+    "finite_artifact_characterization": "SOLVED",
+    "open_world_semantic_completeness": "UNRESOLVED",
+    "model_behavioral_validation": "UNRESOLVED",
+    "hugging_face_dependency": "NONE"
+  },
+  "closure_scope": "Exact supplied Dictionary V2 revision and deterministic benchmark projections only."
+}
