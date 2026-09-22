@@ -120,10 +120,30 @@ def test_09_macro_induction_requires_positive_deletion_value():
 @pytest.mark.parametrize("planner_cls", [GreedyPlanner, BeamPlanner, AStarPlanner, BranchBoundPlanner])
 def test_10_planners_return_required_sequence(planner_cls):
     planner = planner_cls(ValueEstimator(store()), InteractionModel(store()))
-    s = OperatorState(target="x", objective="workflow", required_operators=("COMPILE", "EXPAND", "EVALUATE", "TEST", "SELECT"), budget=10.0)
+    s = OperatorState(target="x", objective="workflow", required_operators=("COMPILE", "EXPAND", "EVALUATE", "TEST", "SELECT"), budget=10.0, live_alternatives=("a", "b"), capabilities=frozenset({"test"}), authority=frozenset({"test"}))
     result = planner.plan(s)
     assert set(s.required_operators).issubset(set(result.sequence))
     assert result.total_cost <= s.budget
+    assert result.feasible
+
+
+@pytest.mark.parametrize("planner_cls", [GreedyPlanner, BeamPlanner, AStarPlanner, BranchBoundPlanner])
+def test_planners_refuse_unauthorized_and_over_budget_sequences(planner_cls):
+    planner = planner_cls(ValueEstimator(store()), InteractionModel(store()))
+    unauthorized = OperatorState(target="x", objective="act", required_operators=("ACT",), budget=1)
+    denied = planner.plan(unauthorized)
+    assert not denied.feasible and not denied.sequence
+    impossible = OperatorState(target="x", objective="reason", required_operators=("COMPILE", "INFER"), budget=0.075)
+    denied = planner.plan(impossible)
+    assert not denied.feasible and not denied.sequence
+
+
+def test_planner_score_includes_order_effect():
+    planner = GreedyPlanner(ValueEstimator(store()), InteractionModel(store()))
+    state = OperatorState(target="x", objective="workflow", required_operators=("COMPILE", "ACQUIRE"), budget=10)
+    forward = planner.score_sequence(("COMPILE", "ACQUIRE"), state).total_value
+    backward = planner.score_sequence(("ACQUIRE", "COMPILE"), state).total_value
+    assert forward != backward
 
 
 def test_11_budget_allocation_stops_on_nonpositive_value():
@@ -131,6 +151,13 @@ def test_11_budget_allocation_stops_on_nonpositive_value():
     s = OperatorState(target="x", objective="done", live_alternatives=("a",), decision_partition=(("a",),), closure_state="SOLVED", budget=0.1)
     nxt = controller.next(s)
     assert nxt.operator in {"CLOSE", None}
+
+
+def test_controller_does_not_force_unaffordable_close():
+    controller = OperatorController(store())
+    state = OperatorState(target="x", objective="done", closure_state="SOLVED", budget=0)
+    result = controller.next(state)
+    assert result.operator is None and result.expected_cost == 0
 
 
 def test_12_counterfactual_replay_distinguishes_delete_and_reorder():
