@@ -48,14 +48,15 @@ For example, a specified `SEVERE-TEST` can dominate generic `REVIEW` when the ta
 
 1. State the exact claim or required output and its governing criteria.
 2. Represent the live hypotheses and the set of acceptable actions under each, including protected constraints.
-3. If the intersection of those sets contains an acceptable action, act and check that result without spending resources resolving irrelevant differences.
-4. Otherwise find a crux: an observation for which the live classes require different continuations.
-5. Set a discriminating test and its failure, inconclusive, and stop conditions before observing the outcome. Choose a severe test when retiring a claim is the governing job.
-6. Run only an available, authorized test. Keep the raw observation, method, and scope.
-7. Update the live alternatives. If the result licenses disposition, record the rule and its owner; otherwise retain the unresolved alternatives.
-8. Carry a reopen predicate into the result. A later source, environment, or contract change triggers only the dependent recheck.
+3. If the intersection of those sets contains an acceptable action, treat it as a robust candidate. Check authorization, acceptance, and bounded effects; separately assess whether an available probe could change the decision or materially improve its outcome.
+4. Probe when it is admissible, within budget, can change a decision-relevant outcome, and its expected or bounded benefit justifies its cost. If the comparison is unknown, preserve the uncertainty rather than treating a shared action as proof that probing is wasteful.
+5. If no common acceptable action exists, find a crux: an observation for which the live classes require different continuations.
+6. Set a discriminating test and its failure, inconclusive, and stop conditions before observing the outcome. Choose a severe test when retiring a claim is the governing job.
+7. Run only an available, authorized test. Keep the raw observation, method, and scope.
+8. Update the live alternatives. If the result licenses disposition, record the rule and its owner; otherwise retain the unresolved alternatives.
+9. Carry a reopen predicate into the result. A later source, environment, or contract change triggers only the dependent recheck.
 
-The common-action check is the useful shortcut. Write `A(h)` for actions that satisfy the request and protected constraints if live hypothesis `h` is true. When `⋂ A(h)` is nonempty, that intersection supplies a candidate robust action. Its actual effect still needs observation and an acceptance check. If `A(h)` is unknown, the intersection cannot be asserted. Comparing `VALUE-OF-INFORMATION` numerically requires a probability model, utility, and probe cost; otherwise keep the tradeoffs explicit.
+Write `A(h)` for actions that satisfy the request and protected constraints if live hypothesis `h` is true. When `⋂ A(h)` is nonempty, the intersection supplies a candidate robust action; it does not establish that acting now is optimal. Probe value depends on whether information can change a governed decision, the consequences and reversibility of acting under uncertainty, and probe cost. A numeric value-of-information estimate requires a probability model, utility, and probe cost. Without them, use explicit bounds or qualitative comparisons, retain incomparable options, and defer when the unresolved comparison matters. The reusable `continuation.choose_continuation` helper applies this conservative policy and returns a recommendation only; callers still own evidence, authority, execution, and result checking.
 
 The 12 [parametric additions](consequence-map.html#additions) name useful missing cuts such as `DECISION-PARTITION`, `ASSUMPTION-CUTSET`, and `INVALIDATION-CONE`. They are proposed composite handles. Their presence does not establish novelty, empirical gain, or universal superiority.
 
