@@ -1,0 +1,19 @@
+name: Verify dictionary index
+on:
+  push:
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m unittest discover -s tests -p 'test_benchmark.py' -v
+      - run: python3 -m unittest discover -s tests -p 'test_operator_system.py' -v
+      - run: python3 operator_system.py check
+      - run: python3 scripts/verify_source.py
+      - run: python3 scripts/audit_100.py
+      - run: python3 scripts/build_map.py
+      - run: git diff --exit-code -- data/catalog.json docs/operator-towers.html docs/review-100.md
