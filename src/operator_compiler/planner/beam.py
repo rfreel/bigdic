@@ -15,4 +15,4 @@ class BeamPlanner(PlannerBase):
                         n=seq+(op,)
                         if self.feasible(n,state): cand.append(n)
             beam=sorted(cand,key=lambda s:self.score_sequence(s,state).total_value,reverse=True)[:self.width]
-        return max((self.score_sequence(s,state) for s in beam),key=lambda r:r.total_value)
+        return max((self.score_sequence(s,state) for s in beam),key=lambda r:r.total_value) if beam else self.infeasible()
