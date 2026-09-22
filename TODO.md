@@ -11,6 +11,7 @@ This is a plan, not a completion ledger. P0 is a structural slice. No task-compl
 - [x] P0.5 Validate record identity, proxy recomputation, and no false authority or execution claim.
 - [ ] P0.6 Inspect desktop and phone rendering, keyboard access, and link behavior in a real browser.
 - [x] P0.7 Reconcile all 794 entries and 1,000 signature references against the pinned V2 draft and benchmark table with `scripts/verify_source.py`.
+- [x] P0.8 Publish a separate parametric consequence map with conditional admission rules; do not present V2 family weights as an effectiveness order.
 
 ## P1: interpret intent into a typed program
 
