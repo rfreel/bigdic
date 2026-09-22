@@ -48,6 +48,10 @@ CUES = {
 
 def catalog(path: Path = CATALOG) -> dict:
     data = json.loads(path.read_text(encoding='utf-8'))
+    source = ROOT / 'data' / data['source_file']
+    digest = hashlib.sha256(source.read_bytes()).hexdigest()
+    if digest != data['source_sha256']:
+        raise ValueError('V2 source digest differs from the catalog basis')
     entries = data['entries']
     names = [e['name'] for e in entries]
     if len(entries) != 803 or len(set(names)) != 803:
