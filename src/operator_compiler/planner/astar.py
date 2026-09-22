@@ -19,4 +19,4 @@ class AStarPlanner(PlannerBase):
                 score=self.score_sequence(n,state).total_value
                 remaining=sum(max(0,self.estimator.store.shapley.get(x,0)) for x in required if x not in used and x!=op)
                 heapq.heappush(heap,(-(score+remaining),n,used|{op}))
-        return self.score_sequence((),state)
+        return self.infeasible()
