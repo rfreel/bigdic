@@ -1,0 +1,327 @@
+[
+  {
+    "from": "TEST",
+    "to": "UPDATE",
+    "count": 4
+  },
+  {
+    "from": "COMPILE",
+    "to": "EXPAND",
+    "count": 4
+  },
+  {
+    "from": "EXPAND",
+    "to": "EVALUATE",
+    "count": 4
+  },
+  {
+    "from": "INSPECT",
+    "to": "SPLIT",
+    "count": 3
+  },
+  {
+    "from": "CHALLENGE",
+    "to": "CLOSE",
+    "count": 3
+  },
+  {
+    "from": "SPLIT",
+    "to": "INFER",
+    "count": 3
+  },
+  {
+    "from": "INFER",
+    "to": "TEST",
+    "count": 3
+  },
+  {
+    "from": "TEST",
+    "to": "VERIFY",
+    "count": 3
+  },
+  {
+    "from": "SPLIT",
+    "to": "REPRESENT",
+    "count": 2
+  },
+  {
+    "from": "INSPECT",
+    "to": "TEST",
+    "count": 2
+  },
+  {
+    "from": "REPRESENT",
+    "to": "EVALUATE",
+    "count": 2
+  },
+  {
+    "from": "COMPILE",
+    "to": "COMPILE",
+    "count": 2
+  },
+  {
+    "from": "ACQUIRE",
+    "to": "INSPECT",
+    "count": 2
+  },
+  {
+    "from": "INSPECT",
+    "to": "REPRESENT",
+    "count": 2
+  },
+  {
+    "from": "EVALUATE",
+    "to": "SELECT",
+    "count": 2
+  },
+  {
+    "from": "SELECT",
+    "to": "TRANSFORM",
+    "count": 2
+  },
+  {
+    "from": "TRANSFORM",
+    "to": "TEST",
+    "count": 2
+  },
+  {
+    "from": "COMPARE",
+    "to": "CHALLENGE",
+    "count": 2
+  },
+  {
+    "from": "REPRESENT",
+    "to": "SPLIT",
+    "count": 2
+  },
+  {
+    "from": "INFER",
+    "to": "REPRESENT",
+    "count": 2
+  },
+  {
+    "from": "REPRESENT",
+    "to": "COMPARE",
+    "count": 1
+  },
+  {
+    "from": "COMPARE",
+    "to": "INFER",
+    "count": 1
+  },
+  {
+    "from": "COMPILE",
+    "to": "INSPECT",
+    "count": 1
+  },
+  {
+    "from": "INSPECT",
+    "to": "INSPECT",
+    "count": 1
+  },
+  {
+    "from": "TEST",
+    "to": "CHALLENGE",
+    "count": 1
+  },
+  {
+    "from": "TEST",
+    "to": "INSPECT",
+    "count": 1
+  },
+  {
+    "from": "UPDATE",
+    "to": "TEST",
+    "count": 1
+  },
+  {
+    "from": "EVALUATE",
+    "to": "TEST",
+    "count": 1
+  },
+  {
+    "from": "TEST",
+    "to": "SELECT",
+    "count": 1
+  },
+  {
+    "from": "TEST",
+    "to": "ACT",
+    "count": 1
+  },
+  {
+    "from": "ACT",
+    "to": "INSPECT",
+    "count": 1
+  },
+  {
+    "from": "EXPAND",
+    "to": "REPRESENT",
+    "count": 1
+  },
+  {
+    "from": "EVALUATE",
+    "to": "CHALLENGE",
+    "count": 1
+  },
+  {
+    "from": "CHALLENGE",
+    "to": "SELECT",
+    "count": 1
+  },
+  {
+    "from": "SELECT",
+    "to": "COMPILE",
+    "count": 1
+  },
+  {
+    "from": "ACQUIRE",
+    "to": "REPRESENT",
+    "count": 1
+  },
+  {
+    "from": "REPRESENT",
+    "to": "INFER",
+    "count": 1
+  },
+  {
+    "from": "INFER",
+    "to": "INFER",
+    "count": 1
+  },
+  {
+    "from": "INFER",
+    "to": "CHALLENGE",
+    "count": 1
+  },
+  {
+    "from": "COMPILE",
+    "to": "ACT",
+    "count": 1
+  },
+  {
+    "from": "ACT",
+    "to": "TEST",
+    "count": 1
+  },
+  {
+    "from": "INSPECT",
+    "to": "INFER",
+    "count": 1
+  },
+  {
+    "from": "REPRESENT",
+    "to": "TRANSFORM",
+    "count": 1
+  },
+  {
+    "from": "TRANSFORM",
+    "to": "ACT",
+    "count": 1
+  },
+  {
+    "from": "ACT",
+    "to": "UPDATE",
+    "count": 1
+  },
+  {
+    "from": "UPDATE",
+    "to": "VERIFY",
+    "count": 1
+  },
+  {
+    "from": "TEST",
+    "to": "CONTROL",
+    "count": 1
+  },
+  {
+    "from": "COMPILE",
+    "to": "SPLIT",
+    "count": 1
+  },
+  {
+    "from": "EVALUATE",
+    "to": "CONTROL",
+    "count": 1
+  },
+  {
+    "from": "EVALUATE",
+    "to": "TRANSFORM",
+    "count": 1
+  },
+  {
+    "from": "INSPECT",
+    "to": "SELECT",
+    "count": 1
+  },
+  {
+    "from": "COMPILE",
+    "to": "ACQUIRE",
+    "count": 1
+  },
+  {
+    "from": "REPRESENT",
+    "to": "EXPAND",
+    "count": 1
+  },
+  {
+    "from": "EXPAND",
+    "to": "COMPARE",
+    "count": 1
+  },
+  {
+    "from": "CHALLENGE",
+    "to": "CONTROL",
+    "count": 1
+  },
+  {
+    "from": "CONTROL",
+    "to": "VERIFY",
+    "count": 1
+  },
+  {
+    "from": "INSPECT",
+    "to": "COMPARE",
+    "count": 1
+  },
+  {
+    "from": "COMPILE",
+    "to": "REPRESENT",
+    "count": 1
+  },
+  {
+    "from": "SPLIT",
+    "to": "EXPAND",
+    "count": 1
+  },
+  {
+    "from": "SELECT",
+    "to": "VERIFY",
+    "count": 1
+  },
+  {
+    "from": "ACQUIRE",
+    "to": "COMPARE",
+    "count": 1
+  },
+  {
+    "from": "COMPARE",
+    "to": "UPDATE",
+    "count": 1
+  },
+  {
+    "from": "UPDATE",
+    "to": "INFER",
+    "count": 1
+  },
+  {
+    "from": "EVALUATE",
+    "to": "REPRESENT",
+    "count": 1
+  },
+  {
+    "from": "REPRESENT",
+    "to": "TEST",
+    "count": 1
+  }
+]

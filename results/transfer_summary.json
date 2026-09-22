@@ -1,0 +1,1 @@
+{"by_regime":{"POSITIVE":{"train":1.0,"heldout":1.0},"NEUTRAL":{"train":0.0,"heldout":0.0},"ADVERSARIAL":{"train":-1.0,"heldout":-1.0}},"transfer_ratio":1.0,"sign_reversal_rate":0.0}

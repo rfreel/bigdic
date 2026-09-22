@@ -1,0 +1,17 @@
+[
+  {"task":1,"name":"Operator State IR","status":"SOLVED","evidence":["src/operator_compiler/state.py","results/state_schema.json"]},
+  {"task":2,"name":"Executable operator contracts","status":"SOLVED","evidence":["src/operator_compiler/contracts.py","data/contracts_seed.json","data/dictionary_provenance.json"]},
+  {"task":3,"name":"Applicability measurement","status":"SOLVED","evidence":["src/operator_compiler/value.py","data/measurements/operator_value_tensor.csv"]},
+  {"task":4,"name":"State-conditioned marginal value","status":"SOLVED","evidence":["src/operator_compiler/value.py","data/measurements/operator_value_tensor.csv"]},
+  {"task":5,"name":"Value of Computation","status":"SOLVED","evidence":["src/operator_compiler/value.py","data/measurements/operator_value_tensor.csv"]},
+  {"task":6,"name":"Value of Experiment / EVSI","status":"SOLVED","evidence":["src/operator_compiler/value.py","data/measurements/operator_value_tensor.csv"]},
+  {"task":7,"name":"Conditional interaction structure","status":"SOLVED","evidence":["src/operator_compiler/interactions.py","data/measurements/pairwise_interactions.csv"]},
+  {"task":8,"name":"Operator motif discovery","status":"SOLVED","evidence":["src/operator_compiler/motifs.py","data/measurements/macro_edges.json"]},
+  {"task":9,"name":"Macro induction from measured chains","status":"SOLVED","evidence":["src/operator_compiler/motifs.py","data/measurements/marginal_deletion_value.csv","data/measurements/chain_search.csv"]},
+  {"task":10,"name":"Sequence planner comparison","status":"SOLVED","evidence":["src/operator_compiler/planner","data/measurements/chain_search.csv"]},
+  {"task":11,"name":"Adaptive budget allocation","status":"SOLVED","evidence":["src/operator_compiler/budget.py","results/budget_frontier.csv"]},
+  {"task":12,"name":"Counterfactual replay","status":"SOLVED","evidence":["src/operator_compiler/replay.py","data/measurements/marginal_deletion_value.csv","data/measurements/pairwise_interactions.csv"]},
+  {"task":13,"name":"Cross-regime transfer","status":"SOLVED_WITHIN_FINITE_LANE","evidence":["src/operator_compiler/transfer.py","data/measurements/transfer_by_regime.csv","results/transfer_summary.json"]},
+  {"task":14,"name":"Cross-model causal experiments","status":"UNRESOLVED","evidence":["src/operator_compiler/backends.py","src/operator_compiler/experiments.py","results/local_model_smoke_summary.json"],"observation":"12 independent trials executed on Qwen/Qwen2.5-0.5B-Instruct via GitHub-hosted LOCAL_TRANSFORMERS; additional models and task regimes remain required for cross-model inference","reopen_trigger":"execute frozen treatment design on additional model families and positive/neutral/adversarial task slices"},
+  {"task":15,"name":"Runtime controller","status":"SOLVED_WITHIN_FINITE_LANE","evidence":["src/operator_compiler/runtime/controller.py","results/controller_eval.csv"]}
+]
