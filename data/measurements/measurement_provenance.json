@@ -1,0 +1,8 @@
+{
+  "source_file": "operator_value_tensor.csv from completed 15-stage operator experiment",
+  "source_sha256": "a2ee1b230fe5425d2794ddc4ad7eb22963204241e7227386536a89583439f831",
+  "source_rows": 432,
+  "runtime_projection_rows": 108,
+  "projection": "state=single_operator AND regime in {POSITIVE,NEUTRAL,ADVERSARIAL} AND metric in {gross_effect,evo}; retain operator,regime,metric,value",
+  "excluded_information": "pairwise/order and Shapley evidence are retained separately in pairwise_interactions.csv and shapley.csv."
+}

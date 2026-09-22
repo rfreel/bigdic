@@ -1,15 +1,38 @@
-name: Toolkit checks
-on: [push, pull_request]
+name: verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: 22
-      - run: npm test
-      - run: npm run build
-      - run: git diff --exit-code -- dist/bigdic.html receipts/source-audit.json
+          python-version: '3.12'
+      - name: Install
+        run: python -m pip install -e . pytest
+      - name: Tests
+        run: python -m pytest -q
+      - name: Regenerate artifacts
+        run: PYTHONPATH=src python scripts/build_artifacts.py
+      - name: Verify dictionary understanding
+        run: python scripts/verify_dictionary_understanding.py
+      - name: Byte compile
+        run: python -m compileall -q src tests scripts
+      - name: Replay backend smoke
+        env:
+          BIGDIC_REPLAY_JSON: '{"ping":"pong"}'
+        run: |
+          python - <<'PY'
+          from operator_compiler.backends import BackendRegistry, TrialRequest
+          r = BackendRegistry.from_env()
+          assert r.names() == ('replay',)
+          assert r.get('replay').invoke(TrialRequest('ping','fixture')).text == 'pong'
+          PY

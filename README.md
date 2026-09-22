@@ -1,70 +1,47 @@
-# BIGDIC
+# bigdic
 
-A working toolkit for the **Canonical Prompt Operator and Modifier Dictionary V2**.
+`bigdic` is an executable operator dictionary and measurement workspace. This branch adds **Operator Compiler v1** and the first **BiggestDic** expansion layer: a transparent state-conditioned controller plus provider-neutral causal experimentation over the 18 canonical operator families.
 
-**Open [`dist/bigdic.html`](dist/bigdic.html) in a modern browser.** Download the raw HTML first; GitHub's file viewer does not execute applications. No server, account, API key, package installation, or external assets are required for the app. For consistent browser storage, use the local server below.
+The exact Dictionary V2 source is pinned at `data/dictionary-v2.md` with SHA-256 `1df69d1f70f4cb66fe1fa73b8924e1d8dd06967fe494342f5385291e819cc23f`.
 
-## What you can do
+See `docs/DICTIONARY_UNDERSTANDING.md` for the exhaustive finite-artifact characterization and `docs/BIGGESTDIC.md` for the expansion program.
 
-- Search **794 lexemes and 1,000 signatures**, including definitions, source forms, input/output roles, obligations, and modifier axes.
-- Filter by one of **20 inherited contracts**, provenance, lexical role, or axis. Facets apply to the same sense.
-- Compare up to four explicit senses. Different values are highlighted without declaring them semantically incompatible.
-- Compose and reorder a sequence of exact signatures. Bind objective, target, scope, actor, revision, required outputs, and evidence plans.
-- Export complete Markdown instructions, a structured contract, or an editable project. Local refinements and inherited contracts are both preserved.
-- Inspect a prompt for dictionary expressions, multiple senses, and nested matches. Matching does not infer negation, intent, authority, or applicability.
-- Save automatically in the browser, export a hash-linked history backup, and restore an earlier draft as a new event.
+## What is implemented
 
-The application never executes dictionary operators or calls an LLM. It is a deterministic dictionary and instruction-authoring tool.
-
-## Run or build
-
-Requires Node.js 20+ for the CLI, tests, and build. No runtime dependencies.
-
-```sh
-npm test
-npm run build
-npm start
+```text
+Dictionary V2
+  -> typed operator contracts
+  -> OperatorState IR
+  -> applicability model
+  -> marginal value / VOC / EVSI estimators
+  -> conditional interaction model
+  -> motif + macro induction
+  -> greedy / beam / A* / branch-and-bound planners
+  -> adaptive budget frontier
+  -> counterfactual replay
+  -> cross-regime transfer report
+  -> runtime controller
+  -> provider-neutral causal backends
+  -> lexeme / pair / triple experiment frontier
 ```
 
-Open http://127.0.0.1:4173. Set `PORT` to change the port. The server binds only to the local machine.
+The epistemic kernel is not optimized away. Source distinctions, authority/capability boundaries, unresolved branches, and external evidence boundaries remain explicit.
 
-## Command line
+## Evidence lanes
 
-```sh
-node cli.mjs audit
-node cli.mjs search VERIFY
-node cli.mjs show SIG-verify-P-external
-node cli.mjs inspect "Rigorously verify exactly two sources"
-node cli.mjs compile examples/source-review.json
-node cli.mjs compile examples/source-review.json --json
+- `FINITE_EXACT`: deterministic operator measurements under `data/measurements/`.
+- `REPLAY`: deterministic provider-neutral causal fixtures used by GitHub Actions.
+- `LOCAL_TRANSFORMERS`: isolated GitHub-hosted CPU inference. It downloads open weights directly and does not use Hugging Face Jobs.
+- `OPENAI_COMPATIBLE`: optional OpenRouter, Groq, and Gemini-compatible transports when their API-key environment variables are supplied.
+
+Hugging Face Jobs is not required.
+
+## Run
+
+```bash
+python -m pytest -q
+PYTHONPATH=src python scripts/build_artifacts.py
+python -m compileall -q src tests scripts
 ```
 
-`compile` accepts an unwrapped project JSON. The browser's editable export contains `format`, `sourceHash`, and `project`; extract its `project` member for the CLI, or use the included example.
-
-## Source integrity
-
-The exact uploaded Markdown is retained in `data/dictionary-v2.md`.
-
-SHA-256: `1df69d1f70f4cb66fe1fa73b8924e1d8dd06967fe494342f5385291e819cc23f`
-
-The parser accounts for all 794 lexical records and 1,000 signature headings. This is structural coverage, not proof of semantic completeness. The source's referenced V1 archive and `data/dictionary_v2.json` were not supplied. Original source references are retained as claims from the uploaded V2; they are not falsely resolved against the V2 line numbers. The UI separately reports the actual V2 line span.
-
-The original document reports its own prior test counts. Those historical claims are not this toolkit's test results. Current receipts are in `receipts/`.
-
-## Honest boundaries
-
-- `BOUND_DRAFT` means required fields have been supplied, not that their contents are true, adequate, authorized, or semantically compatible.
-- Adjacent role mismatch is a review warning. Roles are semantic views, so mismatch is not automatically invalidity.
-- No universal ordering optimizer, semantic conflict solver, authority checker, or automatic disambiguation is claimed.
-- The prompt inspector displays longest non-overlapping matches and retains nested candidates. It does not understand English context.
-- Browser history is append-only through the application, with SHA-256 links. It is **not write-once storage**. Someone who controls the entire history and its head can recompute it. Keep exported backups as independent anchors.
-- Browser clearing or private-mode expiry can remove local state. Export backups for durability. File-URL storage behavior varies by browser; the local server is recommended for long-lived workspaces.
-- Cross-tab writes use Web Locks where available and a stale-state comparison. Without Web Locks, simultaneous writes are not guaranteed safe; use one tab.
-- Importing a history validates its chain and dictionary revision, then appends its final draft to the current workspace. It does not merge imported history into local history.
-- Corrupt storage is preserved rather than overwritten. Browse and inspect remain usable. Export the raw history for recovery.
-
-## Structure
-
-`src/core.mjs` owns parsing, lookup, comparison, lexical inspection, binding checks, and compilation. `src/journal.mjs` owns history integrity. `src/app.mjs` owns browser interaction. `build.mjs` produces a deterministic single-file app. The canonical source is bundled locally without network loading.
-
-See [design and scope](docs/design.md), [verification](docs/verification.md), and [operator coverage](docs/operator-coverage.md).
+Status distinctions are literal: designed, implemented, executed, passed, independently verified, and generalized are not interchangeable. Open-world semantic completeness remains unresolved.
