@@ -9,7 +9,7 @@ export function parseDictionary(source){
  lines.forEach((line,i)=>{const m=/^(#{2,4}) (.+)$/.exec(line);if(m)headings.push({level:m[1].length,title:m[2],line:i});});
  const span=h=>{const next=headings.find(x=>x.line>h.line&&x.level<=h.level);return {start:h.line+1,end:next?next.line:lines.length,raw:lines.slice(h.line,next?.line??lines.length).join('\n')};};
  const contracts={};
- for(const h of headings.filter(h=>h.level===3&&h.title.startsWith('Contract '))){const s=span(h);const name=h.title.slice(9);const fields={};for(const l of s.raw.split('\n')){const m=/^([^:]+): (.*)$/.exec(l);if(m)fields[m[1]]=m[2];}contracts[name]={name,...s,fields};}
+ for(const h of headings.filter(h=>h.level===3&&h.title.startsWith('Contract '))){const s=span(h);const name=h.title.slice(9);const fields={},prose=[];for(const l of s.raw.split('\n')){const m=/^([^:]+): (.*)$/.exec(l);if(m)fields[m[1]]=m[2];else if(l.trim()&&!l.startsWith('### Contract '))prose.push(l);}contracts[name]={name,...s,fields,prose:prose.join('\n')};}
  const lexStart=required(headings.find(h=>h.title==='Lexical dictionary'),'Lexical dictionary heading').line;
  const lexEnd=headings.find(h=>h.level===2&&h.line>lexStart)?.line??lines.length;
  const lexemes=[];const signatures=[];
@@ -93,7 +93,7 @@ export function compileProject(db,project,sourceHash='unrecorded'){
   if(!step.evidence.trim())warnings.push({code:'EVIDENCE_PLAN',step:i+1,message:'Specify what evidence will be collected for step '+(i+1)+'.'});
   if(!step.property.trim())warnings.push({code:'TARGET_PROPERTY',step:i+1,message:'Specify the property or output required for step '+(i+1)+'.'});
   if(i){const prev=db.bySignature.get(project.steps[i-1].signatureId);if(!s.inputs.some(x=>prev.outputs.includes(x)))warnings.push({code:'ROLE_HANDOFF',step:i+1,message:`Step ${i} outputs ${prev.outputs.join(', ')}; step ${i+1} expects ${s.inputs.join(', ')}. Bind an adapter or another operand. Roles are views, not disjoint physical types.`});}
-  return {position:i+1,signatureId:s.id,term:s.term,operator:s.operator,origin:s.origin,source:s.source,sourceSpan:{start:s.start,end:s.end},inputRoles:s.inputs,outputRoles:s.outputs,obligations:s.obligations,transition:s.definition,property:step.property,evidencePlan:step.evidence,localEvidenceRequirement:s.evidence,localStatusRule:s.statusRule,localClosureRule:s.closureRule,contractRef:s.contractRef,inheritedContract:parent.fields};
+  return {position:i+1,signatureId:s.id,term:s.term,operator:s.operator,origin:s.origin,source:s.source,sourceSpan:{start:s.start,end:s.end},inputRoles:s.inputs,outputRoles:s.outputs,obligations:s.obligations,transition:s.definition,property:step.property,evidencePlan:step.evidence,localEvidenceRequirement:s.evidence,localStatusRule:s.statusRule,localClosureRule:s.closureRule,contractRef:s.contractRef,inheritedContract:parent.fields,inheritedContractProse:parent.prose};
  });
  const status=warnings.some(w=>['UNBOUND','EMPTY','EVIDENCE_PLAN','TARGET_PROPERTY'].includes(w.code))?'UNBOUND_DRAFT':'BOUND_DRAFT';
  const result={version:1,status,sourceHash,bindings:structuredClone(project.bindings),steps,warnings,execution:'NOT_EXECUTED',assessment:'Binding completeness only; no authority, truth, semantic compatibility, or closure certification is established.'};
@@ -103,7 +103,7 @@ export function compileProject(db,project,sourceHash='unrecorded'){
  for(const s of steps){text+=`\n## ${s.position}. ${s.term}\nSignature: ${s.signatureId}\nOrigin: ${s.origin}\nSource: ${s.source}\nDictionary lines: ${s.sourceSpan.start}-${s.sourceSpan.end}\nInput roles: ${s.inputRoles.join(', ')}\nOutput roles: ${s.outputRoles.join(', ')}\nObligations: ${s.obligations.join(', ')}\nTransition: ${s.transition}\nRequired property: ${s.property||'[UNBOUND]'}\nEvidence plan: ${s.evidencePlan||'[UNBOUND]'}\n`;
   for(const [k,v] of [['Local evidence requirement',s.localEvidenceRequirement],['Local status rule',s.localStatusRule],['Local closure rule',s.localClosureRule]])if(v)text+=`${k}: ${v}\n`;
  }
- for(const ref of new Set(steps.map(s=>s.contractRef))){text+=`\n## Inherited contract: ${ref}\n`;for(const [k,v] of Object.entries(db.contracts[ref].fields))text+=`${k}: ${v}\n`;}
+ for(const ref of new Set(steps.map(s=>s.contractRef))){text+=`\n## Inherited contract: ${ref}\n`;for(const [k,v] of Object.entries(db.contracts[ref].fields))text+=`${k}: ${v}\n`;if(db.contracts[ref].prose)text+=db.contracts[ref].prose+'\n';}
  text+='\n## Binding checks\n'+(warnings.length?warnings.map(w=>`- ${w.code}: ${w.message}`).join('\n'):'No missing required bindings detected.')+'\n\n'+result.assessment+'\n';
  return {result,text};
 }
