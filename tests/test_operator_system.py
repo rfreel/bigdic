@@ -20,4 +20,12 @@ class OperatorSystemTests(unittest.TestCase):
         terms={x['name']:x for x in op.catalog()['entries']}
         self.assertEqual(terms['DISINHIBITIZE']['origin'],'LOCAL')
         self.assertEqual(terms['PREWALK']['origin'],'LOCAL')
+    def test_consequence_role_does_not_claim_source_membership(self):
+        roles=op.consequence_lookup('FALSIFIER')
+        self.assertEqual(len(roles),1)
+        self.assertEqual(roles[0]['role'],'test_or_stop_rule')
+        self.assertEqual(roles[0]['term_type'],'defeat_condition')
+        self.assertEqual(op.consequence_lookup('KILL-CRITERION')[0]['term_type'],'decision_rule')
+        self.assertEqual(roles[0]['status'],'PARAMETRIC_WORKING_MODEL')
+        self.assertEqual(op.consequence_lookup('not-a-term'),[])
 if __name__=='__main__': unittest.main()

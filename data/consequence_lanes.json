@@ -1,0 +1,72 @@
+{
+  "status": "PARAMETRIC_WORKING_MODEL",
+  "frontiers": [
+    {"name":"Challenge","change":"Retire a claim under a declared test","anchors":["PREMORTEM","RED-TEAM","HOSTILE-REVIEW","CHAOS-TEST"],"lanes":[
+      {"name":"Retire the claim","role":"test_or_stop_rule","terms":["SEVERE-TEST","CRITICAL-EXPERIMENT","FALSIFIER","KILL-CRITERION","STOPPING-RULE"]},
+      {"name":"Force a conflict","role":"discriminator","terms":["CROSS-EXAMINE","ADVERSARIAL-CRUX","INCOMPATIBLE-PREDICTION","BREAKING-CASE","HOSTILE-RECONSTRUCTION"]},
+      {"name":"Bind the attack","role":"repeatability_contract","terms":["THREAT-MODEL","FAULT-TREE","LOSS-MODE","ATTACK-SURFACE-LOCK","POSTMORTEM"]}]},
+    {"name":"Alternatives","change":"Change the live partition without dropping a material rival","anchors":["RIVALIZE","COMPARE","DISCRIMINATE","DISTINGUISH"],"lanes":[
+      {"name":"Change the live partition","role":"partition_rule","terms":["CRUX","EQUIVALENCE-COLLAPSE","NON-EQUIVALENT-CLASS","DOMINANCE-FRONTIER","PARETO-FRONT"]},
+      {"name":"Exhibit a live rival","role":"rival_witness","terms":["COUNTERMODEL","STEELMAN","ANTITHESIS","INCOMMENSURABLE-FRAME","HIDDEN-ALTERNATIVE"]},
+      {"name":"Retire surplus safely","role":"pruning_rule","terms":["SATURATE-THEN-PRUNE","QUOTIENT","CANONICAL-REPRESENTATIVE","DEAD-BRANCH","IRRELEVANT-VARIATION"]}]},
+    {"name":"Decision","change":"License a commitment under an explicit standard","anchors":["DECIDE","EVALUATE","OPTIMIZE","JUDGE","PRIORITIZE"],"lanes":[
+      {"name":"License commitment","role":"decision_standard","terms":["ADJUDICATE","WARRANT","DISPOSITION","VERDICT","AUTHORIZE"]},
+      {"name":"Name a reversal rule","role":"reversal_condition","terms":["DECISION-CRUX","REVERSAL-CONDITION","INADMISSIBILITY","TIE-BREAK-LOCK","REGRET-BOUND"]},
+      {"name":"Keep options live","role":"option_guard","terms":["OPTION-VALUE","DEFER-WITH-TRIGGER","COMMIT-UNDER-INVARIANT","IRREVERSIBILITY-GATE","ESCALATION-THRESHOLD"]}]},
+    {"name":"Frame","change":"Fix the object, scope, and acceptance predicate","anchors":["SCOPE","BIND","DEFINE","CONSTRAIN","FORMALIZE","GROUND","ACCEPTANCE-DEFINE"],"lanes":[
+      {"name":"Make the contract checkable","role":"task_contract","terms":["CONTRACT","INTERFACE-LOCK","INVARIANT-DECLARE","UNIVERSE-OF-DISCOURSE","TYPE-AS-GATE"]},
+      {"name":"Prevent silent reframing","role":"interpretation_guard","terms":["DISAMBIGUATE-TO-EXHAUSTION","FORBIDDEN-READING","CONTEXT-PIN","ASSUMPTION-REGISTER","JURISDICTION"]},
+      {"name":"Make answers comparable","role":"comparison_basis","terms":["PROBLEM-STATEMENT-LOCK","SUCCESS-PREDICATE","OUT-OF-SCOPE-CERTIFICATE","UNIT-OF-ANALYSIS","RESOLUTION-STANDARD"]}]},
+    {"name":"Representation","change":"Expose a distinction without losing an existing one","anchors":["REIFY","DECOMPOSE","MAP","SCHEMA","ABSTRACT"],"lanes":[
+      {"name":"Expose a hidden cut","role":"representation_change","terms":["CHANGE-OF-BASIS","NORMAL-FORM","INVARIANT-FACTOR","QUOTIENT-MAP","SECTION-AND-RETRACTION"]},
+      {"name":"Make the object operable","role":"checkable_witness","terms":["REIFY-TO-CHECKABLE","EXECUTABLE-SPEC","WITNESS-OBJECT","CANONICAL-ENCODING","DEPENDENCY-CUT"]},
+      {"name":"Preserve live classes","role":"fidelity_guard","terms":["FAITHFUL-FUNCTOR","CONSERVATIVE-EXTENSION","NO-INFORMATION-LOSS","ADMISSIBLE-PROJECTION","PRESERVE-DISTINCTIONS"]}]},
+    {"name":"Reasoning","change":"Derive a claim with inspectable dependencies and a possible defeat","anchors":["INFER","DERIVE","SYNTHESIZE","HYPOTHESIZE","FORECAST"],"lanes":[
+      {"name":"License or kill","role":"derivation_test","terms":["DEDUCE-TO-DISPOSITION","ABDUCE-THEN-SEVERE-TEST","DERIVE-AND-EXHIBIT","INCOMPATIBLE-CONSEQUENCE","NECESSARY-CONDITION"]},
+      {"name":"Keep the chain inspectable","role":"proof_trace","terms":["PROOF-OBJECT","EXPLICIT-DEPENDENCY","LEMMA-LOCK","GAP-REGISTER","UNWARRANTED-STEP"]},
+      {"name":"Prevent story-shaped inference","role":"causal_guard","terms":["CAUSAL-IDENTIFICATION","CONFOUND-CONTROL","MECHANISM-HYPOTHESIS","INTERVENTION-TEST","NON-NARRATIVE-DERIVATION"]}]},
+    {"name":"Evidence","change":"Change a warranted belief with an auditable observation","anchors":["REVIEW","INSPECT","TRACE","ACQUIRE","OBSERVE"],"lanes":[
+      {"name":"Change the belief state","role":"evidence_update","terms":["SUFFICIENT-STATISTIC","LIKELIHOOD-RATIO","INDEPENDENT-WITNESS","DISCONFIRMING-INSTANCE","BURDEN-SHIFT"]},
+      {"name":"Keep the path auditable","role":"provenance_contract","terms":["PROVENANCE","CHAIN-OF-CUSTODY","SOURCE-CLASS","METHOD-TAG","RAW-PLUS-TRANSFORM"]},
+      {"name":"Refuse decorative evidence","role":"evidence_failure","terms":["NON-INDEPENDENT-REPLICATION","SHARED-FAILURE-MODE","PSEUDO-CONFIRMATION","UNFALSIFIABLE-SUPPORT","ANECDOTE-CLASS"]}]},
+    {"name":"Control","change":"Keep work inside an authority and resource envelope","anchors":["PLAN","DESIGN","ORCHESTRATE","GATE","LOCK","PREWALK","TWO-PHASE-COMMIT"],"lanes":[
+      {"name":"Keep authority explicit","role":"authority_guard","terms":["GOVERN","STEWARD","MANDATE","DELEGATION-LOCK","OVERRIDE-CONDITION"]},
+      {"name":"Keep work in bounds","role":"resource_guard","terms":["INVARIANT-ENFORCE","BUDGET-AS-GATE","TIMEBOX-AS-GATE","ROLLBACK-GUARANTEE","ATOMIC-HANDOFF"]},
+      {"name":"Detect loss of control","role":"trip_condition","terms":["WATCHDOG","DIVERGENCE-TRIP","AUTHORITY-LEAK","UNOWNED-SIDE-EFFECT","CONTROL-PLANE-SPLIT"]}]},
+    {"name":"Action","change":"Change the world with explicit trial, acceptance, and effect bounds","anchors":["DEPLOY","IMPLEMENT","EXECUTE","COMMIT","ROLLBACK"],"lanes":[
+      {"name":"Separate trial from binding","role":"staged_action","terms":["DRY-RUN-TO-ACCEPTANCE","CANARY-THEN-PROMOTE","SHADOW-EXECUTE","REHEARSE","IDEMPOTENT-APPLY"]},
+      {"name":"Keep undo available","role":"recovery_action","terms":["COMPENSATING-ACTION","SNAPSHOT-RESTORE","FEATURE-FLAG","QUARANTINE","KILL-SWITCH"]},
+      {"name":"Bound action","role":"effect_guard","terms":["PRECONDITION-LOCK","EFFECT-BUDGET","BLAST-RADIUS","IRREVERSIBLE-MARK","HUMAN-IN-THE-LOOP-GATE"]}]},
+    {"name":"State","change":"Repair affected state and invalidate only dependent claims","anchors":["DEBUG","UPDATE","REPAIR","RECONCILE","REFINE"],"lanes":[
+      {"name":"Preserve invariants","role":"state_invariant","terms":["REBASE-UNDER-INVARIANT","CONSISTENT-CUT","SNAPSHOT-ISOLATION","ACCRETE-WITHOUT-COLLAPSE","MONOTONE-UPDATE"]},
+      {"name":"Repair the break","role":"repair_rule","terms":["LOCALIZE-THEN-PATCH","MINIMAL-FIX","REGRESSION-GUARD","ROOT-CAUSE-LOCK","NO-WORKAROUND"]},
+      {"name":"Refuse drift","role":"invalidation_rule","terms":["DRIFT-DETECT","SCHEMA-MIGRATE","VERSION-PIN","RETRACT","INVALIDATE-DOWNSTREAM"]}]},
+    {"name":"Verification","change":"Match the checked property to the exact claim and retain an inspectable witness","anchors":["VERIFY","CHECK","TEST","REPRODUCE"],"lanes":[
+      {"name":"Bind what is checked","role":"verification_contract","terms":["CHECKED-PROPERTY","TARGET-REVISION","TEST-ORACLE","ACCEPTANCE-TEST","PROOF-OBLIGATION"]},
+      {"name":"Produce a witness","role":"verification_witness","terms":["COUNTEREXAMPLE","REPRODUCIBLE-RECEIPT","INDEPENDENT-RECHECK","COVERAGE-BOUND","WITNESS-TO-CLAIM"]},
+      {"name":"Limit the upgrade","role":"verification_limit","terms":["SCOPED-PASS","INCONCLUSIVE","CHECKER-FAILURE","VERSION-EXPIRY","CLAIM-RETRACTION"]}]},
+    {"name":"Closure","change":"Close with a checked condition and a defined reopen trigger","anchors":["CLOSE","FINALIZE","FREEZE","REPORT","ARCHIVE"],"lanes":[
+      {"name":"Check the close condition","role":"closure_predicate","terms":["CLOSURE-CERTIFICATE","NO-REMAINING-MATERIAL-DISTINCTION","ACCEPTANCE-SIGNED","VERDICT-PLUS-CRUX","RESIDUE-REGISTER"]},
+      {"name":"Make reopening explicit","role":"reopen_rule","terms":["REOPEN-PREDICATE","SUNSET","VERSIONED-FREEZE","SUPERSESSION","APPEAL-PATH"]},
+      {"name":"Identify false completion","role":"closure_failure","terms":["PREMATURE-CLOSURE","UNRESOLVED-LIVE-CLASS","MISSING-WITNESS","UNOWNED-RESIDUE","CEREMONIAL-DONE"]}]}
+  ],
+  "term_types": {
+    "SEVERE-TEST":"test_method","CRITICAL-EXPERIMENT":"test_design","FALSIFIER":"defeat_condition","KILL-CRITERION":"decision_rule","STOPPING-RULE":"resource_rule",
+    "CROSS-EXAMINE":"adversarial_method","ADVERSARIAL-CRUX":"discriminating_question","INCOMPATIBLE-PREDICTION":"outcome_constraint","BREAKING-CASE":"counterexample","HOSTILE-RECONSTRUCTION":"rival_model",
+    "CRUX":"discriminator","COUNTERMODEL":"rival_witness","PARETO-FRONT":"nondominated_set","DEAD-BRANCH":"closed_branch","IRRELEVANT-VARIATION":"equivalence_claim",
+    "WARRANT":"justification","AUTHORIZE":"authority_decision","INADMISSIBILITY":"exclusion_status","OPTION-VALUE":"decision_quantity","REVERSAL-CONDITION":"decision_trigger",
+    "DISAMBIGUATE-TO-EXHAUSTION":"unbounded_goal","SUCCESS-PREDICATE":"acceptance_condition","NO-INFORMATION-LOSS":"fidelity_claim","ROLLBACK-GUARANTEE":"unverified_guarantee",
+    "UNWARRANTED-STEP":"reasoning_failure","LIKELIHOOD-RATIO":"statistical_quantity","PSEUDO-CONFIRMATION":"evidence_failure","AUTHORITY-LEAK":"control_failure",
+    "BLAST-RADIUS":"effect_measure","HUMAN-IN-THE-LOOP-GATE":"approval_condition","RETRACT":"claim_update","CHECKER-FAILURE":"verification_failure",
+    "INCONCLUSIVE":"verification_status","SCOPED-PASS":"verification_status","CEREMONIAL-DONE":"closure_failure","PREMATURE-CLOSURE":"closure_failure",
+    "DO-CALCULUS":"causal_method","STARE-DECISIS":"legal_doctrine","NNT":"clinical_measure","RESERVE":"domain_specific_term"
+  },
+  "domains": [
+    {"name":"Causal / scientific","terms":["IDENTIFY","INTERVENE","RANDOMIZE","INSTRUMENT","DO-CALCULUS","CONFOUND-BLOCK","MEDIATION-CUT","PLACEBO-CONTROL","PRE-REGISTER","REPLICATION-CLASS","SEVERE-TEST","AUXILIARY-HYPOTHESIS-LOCK"]},
+    {"name":"Legal / fiduciary","terms":["BURDEN","STANDARD-OF-PROOF","HOLDING","RATIO","STARE-DECISIS","CHAIN-OF-TITLE","FIDUCIARY-DUTY","DISCLOSURE","WAIVER","ESTOPPEL","RECORD","CUSTODY"]},
+    {"name":"Engineering / design","terms":["REQUIREMENT-LOCK","INTERFACE-CONTRACT","TOLERANCE","SAFETY-FACTOR","FMEA","HAZOP","DESIGN-FREEZE","CHANGE-CONTROL","TRACE-TO-SPEC","MARGIN","DERATE","FAIL-SAFE"]},
+    {"name":"Military / operational","terms":["COMMANDER-INTENT","END-STATE","DECISION-POINT","ABORT-CRITERIA","BRANCH-AND-SEQUEL","RESERVE","RECONNAISSANCE-PULL","CENTER-OF-GRAVITY","CULMINATION","EXPLOIT","CONSOLIDATE","AFTER-ACTION"]},
+    {"name":"Medical / diagnostic","terms":["DIFFERENTIAL","PATHOGNOMONIC","RULE-OUT","PRE-TEST-PROBABILITY","LIKELIHOOD-RATIO","GOLD-STANDARD","BLIND","NNT","CONTRAINDICATION","WATCHFUL-WAITING","IATROGENIC-BOUND","SECOND-OPINION"]},
+    {"name":"Fiduciary / financial","terms":["MARK-TO-MARKET","RESERVE","HAIRCUT","COVENANT","DEFAULT-TRIGGER","RECONCILE","MATERIALITY","GOING-CONCERN","IMPAIR","HEDGE-EFFECTIVENESS","AUDIT-TRAIL","BENEFICIAL-OWNER"]}
+  ]
+}

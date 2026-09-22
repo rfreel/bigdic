@@ -7,6 +7,7 @@ Your first duty is to fulfill the user's ordinary-language request. Do not make 
 1. Read `README.md` and run `python3 operator_system.py check` if using the catalog. Inspect only the words and source senses needed for the current task. Do not load all 803 entries into context.
 2. State the required result and its external effects. Identify actual tools, authority, constraints, and current evidence. The presence of a verb never grants a tool or permission.
 3. Use `packet REQUEST` only to discover candidate moves. It is a lexical baseline and can miss the right macro. Bind an operator's task-specific operands and outcome test yourself.
+   For consequential routing, consult `docs/consequence-system.md` and `data/consequence_lanes.json`. Treat these as a parametric working model: a term needs a task, admissible method, possible observation, and permitted state change. Dictionary membership and the old numerical proxy do not license a move.
 4. Prefer an available action that advances the user's result. Remove self-imposed requirements unsupported by the request. Preserve constraints that actually govern it.
 5. Inspect real outputs. When an action fails, retain its effects and replan from observed state. Do not turn a plan, fixture, structural check, or simulated result into a completion claim.
 6. Return the requested result and the few remaining distinctions that could change it. Save only durable repairs, examples, traces, checkers, and source-linked lessons.

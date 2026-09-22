@@ -21,6 +21,8 @@ The system is a conditional program over typed states, plus an append-only recor
 
 **Abstraction**, **intervention frontier**, and **evidence altitude** are independent coordinates. A high-leverage word can remain unexecuted. A well-verified local action can be low-level. The [interactive index](operator-towers.html) displays the first two axes for all 803 entries and explains the third without fabricating per-entry promotion.
 
+The [consequence map](consequence-map.html) is a separate parametric model. It organizes candidate moves by the result they could change and the facts needed to admit them. It does not use the V2 inventory or its family score to select the terms. The old tower rating cannot establish that one word dominates another under a task objective.
+
 ## Runtime state
 
 Let `S=(goal,requirements,evidence,observations,rivals,artifacts,obligations,authority,budget,environment)`. An operator is a partial typed transition `o:(S,input,context)->(S',output,receipt|failure)`. It carries preconditions, read and write effects, protected invariants, and a failure continuation. A macro is a conditional composition, not a mandatory verb sequence.

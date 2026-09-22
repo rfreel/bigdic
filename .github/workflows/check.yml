@@ -17,3 +17,5 @@ jobs:
       - run: python3 scripts/audit_100.py
       - run: python3 scripts/build_map.py
       - run: git diff --exit-code -- data/catalog.json docs/operator-towers.html docs/review-100.md
+      - run: python3 scripts/build_consequence_map.py
+      - run: git diff --exit-code -- docs/consequence-map.html
