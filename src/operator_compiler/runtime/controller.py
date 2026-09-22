@@ -41,7 +41,7 @@ class OperatorController:
         applicable=[x for x in scored if x.applicability=="APPLICABLE" and x.expected_cost<=state.budget]
         chosen=applicable[0] if applicable else None
         if state.solved or (chosen and chosen.expected_value<=0):
-            close=next((x for x in scored if x.operator=="CLOSE" and x.applicability=="APPLICABLE"),None)
+            close=next((x for x in applicable if x.operator=="CLOSE"),None)
             chosen=close
         op=chosen.operator if chosen else None
         evidence=("operator_value_tensor:FINITE_EXACT","pairwise_interactions:FINITE_EXACT",f"external_model:{self.store.external_receipt.get('status')}")
