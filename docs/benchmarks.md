@@ -36,3 +36,7 @@ Include facts, research, ambiguous interpretation, code repair, document deliver
 ## Admission to a claim
 
 A typed signature can be structurally checked. A finite policy can be proved optimal only for its complete declared transition model and objective. A word's causal effect needs an explicit comparator, paired observations, and a specified task distribution. Macro interaction requires combinations, not standalone scores. A PASS receipt promotes only the checked property under its versioned context. A reward cannot promote truth. Stop a lane when another run cannot change its declared decision within budget; preserve and name the remaining uncertainty.
+
+## Run-record analyzer
+
+`python3 benchmarks/evaluate.py runs.jsonl` consumes observed JSONL records with stable `task_id`, `condition`, `domain`, `provenance`, nullable `success` and `false_completion`, and nonnegative `input_tokens`, `output_tokens`, `tool_calls`, and `wall_seconds`. It reports per-condition counts, false completions, median costs, complete paired success differences with seeded bootstrap intervals when at least two pairs exist, and all missing or unresolved pairs. It rejects empty, duplicated, malformed, or domain-mismatched observations. A report does not certify randomized assignment or reliable judging; those are separate protocol requirements.
