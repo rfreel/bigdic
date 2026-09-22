@@ -27,6 +27,6 @@ Keep user-facing terminology plain. `REIFY`, `RIVALIZE`, `PREWALK`, and `DISINHI
 
 ## Changes to this repository
 
-Treat `data/catalog.json` as a versioned source-indexed snapshot. Recompute its digest and every proxy value from the scoring rule when changing it. Never silently reclassify V2 source text as a measured result. Preserve the 794-to-9 provenance partition or document a versioned migration.
+Treat `data/catalog.json` as a generated, versioned source-indexed snapshot. Its canonical draft is `data/dictionary-v2.md`. Change `scripts/build_map.py` or its pinned inputs, regenerate the catalog and offline page, then run `scripts/verify_source.py` and `scripts/audit_100.py`. Never silently reclassify V2 source text as a measured result. Preserve the 794-to-9 provenance partition or document a versioned migration.
 
-Change architecture, implementation, benchmarks, and agent instructions together when a new transition crosses their boundaries. Run `python3 -m unittest discover -s tests -v`. Run `python3 operator_system.py check`. Report the exact checks and their scope, plus unexecuted gates. Publication or deployment needs observed delivery evidence.
+Change architecture, implementation, benchmarks, and agent instructions together when a new transition crosses their boundaries. Run `python3 -m unittest discover -s tests -p 'test_benchmark.py' -v` and repeat with `test_operator_system.py`; the compiler uses `pytest` separately. Run `python3 operator_system.py check`. Report the exact checks and their scope, plus unexecuted gates. Publication or deployment needs observed delivery evidence.

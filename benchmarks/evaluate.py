@@ -18,11 +18,12 @@ def load(path: Path):
         except json.JSONDecodeError as e:raise ValueError(f'line {number}: invalid JSON: {e}') from e
         missing=REQUIRED-row.keys()
         if missing:raise ValueError(f'line {number}: missing {sorted(missing)}')
-        if row['success'] not in (True,False,None) or row['false_completion'] not in (True,False,None):
+        if any(value is not None and type(value) is not bool
+               for value in (row['success'],row['false_completion'])):
             raise ValueError(f'line {number}: invalid result type')
         for key in ('input_tokens','output_tokens','tool_calls','wall_seconds'):
             value=row[key]
-            if not isinstance(value,(int,float)) or isinstance(value,bool) or value<0:
+            if not isinstance(value,(int,float)) or isinstance(value,bool) or not (0 <= value < float('inf')):
                 raise ValueError(f'line {number}: invalid {key}')
         if not all(isinstance(row[k],str) and row[k] for k in ('task_id','condition','domain','provenance')):
             raise ValueError(f'line {number}: unbound identity or provenance')
@@ -40,6 +41,8 @@ def interval(values,seed=20260922,reps=2000):
     return [samples[int(.025*(reps-1))],samples[int(.975*(reps-1))]]
 
 def analyze(records,baseline='baseline',candidate='candidate'):
+    if baseline==candidate:
+        raise ValueError('Baseline and candidate must be different conditions')
     bycondition=collections.defaultdict(list)
     for row in records.values():bycondition[row['condition']].append(row)
     summary={}
@@ -58,8 +61,8 @@ def analyze(records,baseline='baseline',candidate='candidate'):
     for task in ids:
         a=records.get((task,baseline));b=records.get((task,candidate))
         if not a or not b:missing.append(task);continue
-        if a['success'] is None or b['success'] is None:incomplete.append(task);continue
         if a['domain']!=b['domain']:raise ValueError(f'Domain mismatch on task {task}')
+        if a['success'] is None or b['success'] is None:incomplete.append(task);continue
         complete.append((task,a,b))
     differences=[int(b['success'])-int(a['success']) for _,a,b in complete]
     domain={}

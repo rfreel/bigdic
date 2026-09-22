@@ -22,4 +22,14 @@ class BenchmarkTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as d:
    p=Path(d)/'runs.jsonl';p.write_text('')
    with self.assertRaisesRegex(ValueError,'No observations'):load(p)
+ def test_numeric_boolean_and_nonfinite_cost_are_rejected(self):
+  for key,value in [('success',1),('false_completion',0),('wall_seconds',float('inf'))]:
+   row=self.row('a','baseline',True);row[key]=value
+   with self.subTest(key=key):
+    with tempfile.TemporaryDirectory() as d:
+     p=Path(d)/'runs.jsonl';p.write_text(json.dumps(row)+'\n')
+     with self.assertRaisesRegex(ValueError,'invalid'):load(p)
+ def test_same_condition_is_not_a_comparison(self):
+  with self.assertRaisesRegex(ValueError,'different conditions'):
+   analyze({('a','baseline'):self.row('a','baseline',True)},'baseline','baseline')
 if __name__=='__main__':unittest.main()

@@ -10,7 +10,7 @@ This is a plan, not a completion ledger. P0 is a structural slice. No task-compl
 - [x] P0.4 Offer exact lookup, bounded browse, and candidate-only request packets.
 - [x] P0.5 Validate record identity, proxy recomputation, and no false authority or execution claim.
 - [ ] P0.6 Inspect desktop and phone rendering, keyboard access, and link behavior in a real browser.
-- [ ] P0.7 Independently reconcile all 1,000 V2 signature references against the pinned source bytes.
+- [x] P0.7 Reconcile all 794 entries and 1,000 signature references against the pinned V2 draft and benchmark table with `scripts/verify_source.py`.
 
 ## P1: interpret intent into a typed program
 
