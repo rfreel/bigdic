@@ -104,6 +104,9 @@ def consequence_lookup(term: str) -> list[dict]:
             if word.casefold()==term.casefold():
                 matches.append({'term':word,'domain':domain['name'],'term_type':kinds.get(word,'domain_concept'),'status':data['status'],
                                 'note':'Domain vocabulary; its technical assumptions still apply'})
+    for addition in data['parametric_additions']:
+        if addition['term'].casefold()==term.casefold():
+            matches.append({**addition,'term_type':'parametric_extension','status':data['status']})
     return matches
 
 def main(argv=None):
@@ -119,6 +122,7 @@ def main(argv=None):
     elif a.command=='consequences':
         d=json.loads(CONSEQUENCE_MAP.read_text(encoding='utf-8'))
         result={'status':d['status'],'frontiers':[f for f in d['frontiers'] if not a.frontier or f['name'].casefold()==a.frontier.casefold()],
+                'parametric_additions':[x for x in d['parametric_additions'] if not a.frontier or x['frontier'].casefold()==a.frontier.casefold()],
                 'domains':d['domains'] if not a.frontier else []}
     else:
         c=catalog()

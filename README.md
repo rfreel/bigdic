@@ -4,7 +4,7 @@ BigDic contains a parametric consequence map, a browser dictionary, a finite ope
 
 | Need | Start here | What it does |
 | --- | --- | --- |
-| Find the move that could change the result | [Consequence map](docs/consequence-map.html) and [admission rules](docs/consequence-system.md) | Organizes 180 frontier positions and 72 domain positions by their possible state change and required bindings. It is a parametric working model. |
+| Find the move that could change the result | [Consequence map](docs/consequence-map.html) and [admission rules](docs/consequence-system.md) | Organizes 180 frontier positions, 72 domain positions, and 12 further parametric cuts by possible state change and required bindings. |
 | Find senses and compose an instruction draft | [Browser toolkit](dist/bigdic.html) or `node cli.mjs search VERIFY` | Searches 794 lexemes and 1,000 signatures, compares senses, and exports drafts. It does not execute them. |
 | Inspect a conditional controller and measured experiment lanes | [Compiler](docs/BIGGESTDIC.md) | Plans over 18 operator families with applicability and budget checks. Its finite measurements and small local-model smoke have declared scopes. |
 | Inspect the historical source inventory | [Operator towers](docs/operator-towers.html) | Places 794 V2 records and nine local extensions on linked levels and frontiers. Its old score is a family-weighted browsing proxy; it does not rank consequences. |

@@ -44,17 +44,20 @@ Say `a` dominates `b` only after binding the same task and protected criteria. B
 
 For example, a specified `SEVERE-TEST` can dominate generic `REVIEW` when the task is to retire a risky claim, the claim has a precommitted failure criterion, and the test can discriminate it at acceptable cost. If the review would discover a missing safety requirement that the proposed test ignores, dominance is not established. A `STOPPING-RULE` can bound expenditure without establishing the truth of a claim. `AUTHORIZE` describes a decision governed by an actual grant; typing it confers no authority.
 
-## The useful composition
+## A stronger composition
 
 1. State the exact claim or required output and its governing criteria.
-2. Exhibit at least one live rival that would change the decision.
-3. Find a crux: an observation for which the rivals predict incompatible results.
-4. Set a severe test and its failure, inconclusive, and stop conditions before observing the outcome.
-5. Run only an available, authorized test. Keep the raw observation, method, and scope.
-6. Update the live alternatives. If the result licenses disposition, record the rule and its owner; otherwise retain the unresolved alternatives.
-7. Carry a reopen predicate into the result. A later source, environment, or contract change triggers only the dependent recheck.
+2. Represent the live hypotheses and the set of acceptable actions under each, including protected constraints.
+3. If the intersection of those sets contains an acceptable action, act and check that result without spending resources resolving irrelevant differences.
+4. Otherwise find a crux: an observation for which the live classes require different continuations.
+5. Set a discriminating test and its failure, inconclusive, and stop conditions before observing the outcome. Choose a severe test when retiring a claim is the governing job.
+6. Run only an available, authorized test. Keep the raw observation, method, and scope.
+7. Update the live alternatives. If the result licenses disposition, record the rule and its owner; otherwise retain the unresolved alternatives.
+8. Carry a reopen predicate into the result. A later source, environment, or contract change triggers only the dependent recheck.
 
-This composition can retire a claim or change an action. It does not guarantee either result. The saved asset is the discriminating observation and conditional continuation, not the cleverness of the label.
+The common-action check is the useful shortcut. Write `A(h)` for actions that satisfy the request and protected constraints if live hypothesis `h` is true. When `⋂ A(h)` is nonempty, that intersection supplies a candidate robust action. Its actual effect still needs observation and an acceptance check. If `A(h)` is unknown, the intersection cannot be asserted. Comparing `VALUE-OF-INFORMATION` numerically requires a probability model, utility, and probe cost; otherwise keep the tradeoffs explicit.
+
+The 12 [parametric additions](consequence-map.html#additions) name useful missing cuts such as `DECISION-PARTITION`, `ASSUMPTION-CUTSET`, and `INVALIDATION-CONE`. They are proposed composite handles. Their presence does not establish novelty, empirical gain, or universal superiority.
 
 ## Three corrections to the supplied wording
 

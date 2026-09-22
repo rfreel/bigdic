@@ -26,6 +26,9 @@ class OperatorSystemTests(unittest.TestCase):
         self.assertEqual(roles[0]['role'],'test_or_stop_rule')
         self.assertEqual(roles[0]['term_type'],'defeat_condition')
         self.assertEqual(op.consequence_lookup('KILL-CRITERION')[0]['term_type'],'decision_rule')
+        addition=op.consequence_lookup('DECISION-PARTITION')[0]
+        self.assertEqual(addition['term_type'],'parametric_extension')
+        self.assertIn('acceptable actions',addition['change'])
         self.assertEqual(roles[0]['status'],'PARAMETRIC_WORKING_MODEL')
         self.assertEqual(op.consequence_lookup('not-a-term'),[])
 if __name__=='__main__': unittest.main()
